@@ -125,6 +125,9 @@ export class UswdsHeader {
               </form>
             </section> : null}
 
+
+            <slot></slot>
+
           </nav>
         </div>
       </header>

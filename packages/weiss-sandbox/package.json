@@ -26,8 +26,12 @@
     "generate": "stencil generate"
   },
   "dependencies": {
+    "@octokit/rest": "^19.0.11",
+    "@rollup/plugin-replace": "^5.0.2",
     "@stencil/core": "^3.0.0",
-    "@uswds/uswds": "^3.4.1"
+    "@uswds/uswds": "^3.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@stencil/angular-output-target": "^0.7.1",

@@ -7,7 +7,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
   shadow: false,
 })
 export class UswdsSideNav {
-  @Prop() ariaLabel: string = "Side Navigation"
+  @Prop() region: string = "Side Navigation"
 
 
 
@@ -17,7 +17,7 @@ export class UswdsSideNav {
     return (
 
       <Host>
-        <nav aria-label={this.ariaLabel}>
+        <nav aria-label={this.region}>
          <ul class="usa-sidenav">
             <slot></slot>
          </ul>

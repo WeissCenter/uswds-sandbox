@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.github-connector{
+  margin-left: 20px;
+}
+
+
+.github-connector form{
+  display: flex;
+  gap: 8px;
+}

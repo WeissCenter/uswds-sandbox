@@ -11,9 +11,13 @@
   flex: 0.10;
   border: 2px solid rgb(241, 236, 236);
   border-radius: 8px;
-
+  padding: 2px;
+  height: 100%;
 }
 
 .main-content{
   flex: 0.90;
+  border-radius: 8px;
+  border: 2px solid rgb(241, 236, 236);
+  padding: 0.66rem;
 }

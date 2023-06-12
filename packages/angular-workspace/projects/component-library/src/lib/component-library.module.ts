@@ -12,9 +12,8 @@ import { defineCustomElements } from 'weiss-sandbox/loader';
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: () => {
-        return defineCustomElements();
-      },
+      useFactory: () => defineCustomElements,
+      multi: true
     },
   ]
 })

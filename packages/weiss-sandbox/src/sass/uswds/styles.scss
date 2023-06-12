@@ -1,3 +1,8 @@
 @forward "uswds-theme";
 @forward "uswds";
 @forward "uswds-theme-custom-styles";
+
+
+:root{
+    --var-test: 'blue-60v';
+}

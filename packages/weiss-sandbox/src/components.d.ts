@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HeaderNavItem } from "./model/HeaderNavMenu";
 export { HeaderNavItem } from "./model/HeaderNavMenu";
 export namespace Components {
+    interface GithubConnector {
+    }
     interface SandboxMainContent {
     }
     interface UswdsExtendedHeader {
@@ -18,7 +20,7 @@ export namespace Components {
         "navItems": HeaderNavItem[];
     }
     interface UswdsSideNav {
-        "ariaLabel": string;
+        "region": string;
     }
     interface UswdsSideNavItem {
     }
@@ -26,6 +28,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLGithubConnectorElement extends Components.GithubConnector, HTMLStencilElement {
+    }
+    var HTMLGithubConnectorElement: {
+        prototype: HTMLGithubConnectorElement;
+        new (): HTMLGithubConnectorElement;
+    };
     interface HTMLSandboxMainContentElement extends Components.SandboxMainContent, HTMLStencilElement {
     }
     var HTMLSandboxMainContentElement: {
@@ -63,6 +71,7 @@ declare global {
         new (): HTMLUswdsSideNavSubListElement;
     };
     interface HTMLElementTagNameMap {
+        "github-connector": HTMLGithubConnectorElement;
         "sandbox-main-content": HTMLSandboxMainContentElement;
         "uswds-extended-header": HTMLUswdsExtendedHeaderElement;
         "uswds-header": HTMLUswdsHeaderElement;
@@ -72,6 +81,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface GithubConnector {
+    }
     interface SandboxMainContent {
     }
     interface UswdsExtendedHeader {
@@ -82,13 +93,14 @@ declare namespace LocalJSX {
         "navItems"?: HeaderNavItem[];
     }
     interface UswdsSideNav {
-        "ariaLabel"?: string;
+        "region"?: string;
     }
     interface UswdsSideNavItem {
     }
     interface UswdsSideNavSubList {
     }
     interface IntrinsicElements {
+        "github-connector": GithubConnector;
         "sandbox-main-content": SandboxMainContent;
         "uswds-extended-header": UswdsExtendedHeader;
         "uswds-header": UswdsHeader;
@@ -101,6 +113,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "github-connector": LocalJSX.GithubConnector & JSXBase.HTMLAttributes<HTMLGithubConnectorElement>;
             "sandbox-main-content": LocalJSX.SandboxMainContent & JSXBase.HTMLAttributes<HTMLSandboxMainContentElement>;
             "uswds-extended-header": LocalJSX.UswdsExtendedHeader & JSXBase.HTMLAttributes<HTMLUswdsExtendedHeaderElement>;
             "uswds-header": LocalJSX.UswdsHeader & JSXBase.HTMLAttributes<HTMLUswdsHeaderElement>;

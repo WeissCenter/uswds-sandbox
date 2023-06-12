@@ -7,12 +7,25 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type              | Default                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| -------------- | --------------- | ----------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enableSearch` | `enable-search` |             | `boolean`         | `true`                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| `headerTitle`  | `header-title`  |             | `string`          | `'Project Title'`                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `navItems`     | --              |             | `HeaderNavItem[]` | `[      {menuTitle: 'Dome', type: HeaderNavItemType.SUB_MENU, items: [{href: 'https://www.google.com', label: "dome"}], current: false},     {menuTitle: 'Dome', type: HeaderNavItemType.SUB_MENU, items: [{href: 'https://www.google.com', label: "dome"}], current: false},     {menuTitle: 'Dome', type: HeaderNavItemType.SUB_MENU, items: [{href: 'https://www.google.com', label: "dome"}], current: false}    ]` |
+| Property       | Attribute       | Description | Type              | Default           |
+| -------------- | --------------- | ----------- | ----------------- | ----------------- |
+| `enableSearch` | `enable-search` |             | `boolean`         | `true`            |
+| `headerTitle`  | `header-title`  |             | `string`          | `'Project Title'` |
+| `navItems`     | --              |             | `HeaderNavItem[]` | `[]`              |
 
+
+## Dependencies
+
+### Used by
+
+ - [sandbox-main-content](../sandbox-main-content)
+
+### Graph
+```mermaid
+graph TD;
+  sandbox-main-content --> uswds-header
+  style uswds-header fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
