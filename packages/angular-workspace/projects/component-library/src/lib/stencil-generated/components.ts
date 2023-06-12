@@ -93,14 +93,14 @@ export declare interface UswdsHeader extends Components.UswdsHeader {}
 
 
 @ProxyCmp({
-  inputs: ['ariaLabel']
+  inputs: ['region']
 })
 @Component({
   selector: 'uswds-side-nav',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['ariaLabel'],
+  inputs: ['region'],
 })
 export class UswdsSideNav {
   protected el: HTMLElement;

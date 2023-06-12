@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type     | Default             |
-| ----------- | ------------ | ----------- | -------- | ------------------- |
-| `ariaLabel` | `aria-label` |             | `string` | `"Side Navigation"` |
+| Property | Attribute | Description | Type     | Default             |
+| -------- | --------- | ----------- | -------- | ------------------- |
+| `region` | `region`  |             | `string` | `"Side Navigation"` |
 
 
 ## Dependencies
