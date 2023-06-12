@@ -7,12 +7,17 @@ import { Component, Host, Listen, Prop, State, h } from '@stencil/core';
 })
 export class SandboxMainContent {
   private Components = [
-
+    {
+      'name': 'Design Tokens',
+      'hash': 'design-tokens',
+      'content': () => <design-token-management></design-token-management>
+    },
     {
       'name': 'Header',
       'hash': 'header',
-      'content':
-      <div>
+      'content': () => {
+
+        return <div>
 
         <p>Header</p>
 
@@ -20,29 +25,80 @@ export class SandboxMainContent {
 
 
       </div>
+
+
+      }
+
     },
     {
       'name': 'SideNav',
       'hash': 'sidenav',
-      'content':         <uswds-side-nav>
-      <uswds-side-nav-item>
-        <a class="usa-current">Item</a>
-      </uswds-side-nav-item>
-      <uswds-side-nav-item>
-        <a>Item 2</a>
-        <uswds-side-nav-sub-list>
-          <uswds-side-nav-item>
-            <a >Item 2 Child</a>
-          </uswds-side-nav-item>
-        </uswds-side-nav-sub-list>
-      </uswds-side-nav-item>
-  </uswds-side-nav>
-    }
-  
+      'content':  () => {
+        return <uswds-side-nav>
+        <uswds-side-nav-item>
+          <a class="usa-current">Item</a>
+        </uswds-side-nav-item>
+        <uswds-side-nav-item>
+          <a>Item 2</a>
+          <uswds-side-nav-sub-list>
+            <uswds-side-nav-item>
+              <a >Item 2 Child</a>
+            </uswds-side-nav-item>
+          </uswds-side-nav-sub-list>
+        </uswds-side-nav-item>
+    </uswds-side-nav>
+      }
+    },
+    {
+      'name': 'Accordion',
+      'hash': 'accordion',
+      'content': () => {
+        return       <div>
+
+        <p>Accordion</p>
+
+        <uswds-accordion>
+          <uswds-accordion-item header="Test 1" expanded={true}>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+          <uswds-accordion-item header="Test 2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+        </uswds-accordion>
+
+        <p>Bordered Accordion</p>
+
+        <uswds-accordion accordion-type='bordered'>
+          <uswds-accordion-item header="Bordered Test 1" expanded={true}>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+          <uswds-accordion-item header="Bordered Test 2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+        </uswds-accordion>
+
+
+        <p>Multiselectable Accordion</p>
+
+        <uswds-accordion accordion-type='multiselectable'>
+          <uswds-accordion-item header="Multi-selectable Test 1" expanded={true}>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+          <uswds-accordion-item header="Multi-selectable Test 2">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, omnis. In, praesentium iusto. Ullam placeat voluptas debitis culpa tempora! In rem, cupiditate reiciendis quibusdam maiores rerum atque aliquid corrupti sed!</p>
+          </uswds-accordion-item>
+        </uswds-accordion>
+
+
+
+      </div>
+      }
+
+    },
   
   ]
 
-  @State() hash: string;
+  @State() hash: string = window.location.hash.split("#")[1];
 
   @Listen('hashchange', {target: 'window'})
   onHashChange(event: any){
@@ -83,7 +139,7 @@ export class SandboxMainContent {
             </uswds-side-nav>
             </aside>
             <div class="main-content">
-               {component?.content ? component.content : 
+               {component?.content ? component.content() : 
 
                 <div>
                   Welcome to the sandbox!

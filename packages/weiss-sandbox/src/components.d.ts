@@ -8,9 +8,17 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { HeaderNavItem } from "./model/HeaderNavMenu";
 export { HeaderNavItem } from "./model/HeaderNavMenu";
 export namespace Components {
-    interface GithubConnector {
+    interface DesignTokenManagement {
+        "json": string;
     }
     interface SandboxMainContent {
+    }
+    interface UswdsAccordion {
+        "accordionType": 'borderless' | 'bordered' | 'multiselectable';
+    }
+    interface UswdsAccordionItem {
+        "expanded": boolean;
+        "header": string;
     }
     interface UswdsExtendedHeader {
     }
@@ -18,6 +26,8 @@ export namespace Components {
         "enableSearch": boolean;
         "headerTitle": string;
         "navItems": HeaderNavItem[];
+    }
+    interface UswdsModal {
     }
     interface UswdsSideNav {
         "region": string;
@@ -28,17 +38,29 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLGithubConnectorElement extends Components.GithubConnector, HTMLStencilElement {
+    interface HTMLDesignTokenManagementElement extends Components.DesignTokenManagement, HTMLStencilElement {
     }
-    var HTMLGithubConnectorElement: {
-        prototype: HTMLGithubConnectorElement;
-        new (): HTMLGithubConnectorElement;
+    var HTMLDesignTokenManagementElement: {
+        prototype: HTMLDesignTokenManagementElement;
+        new (): HTMLDesignTokenManagementElement;
     };
     interface HTMLSandboxMainContentElement extends Components.SandboxMainContent, HTMLStencilElement {
     }
     var HTMLSandboxMainContentElement: {
         prototype: HTMLSandboxMainContentElement;
         new (): HTMLSandboxMainContentElement;
+    };
+    interface HTMLUswdsAccordionElement extends Components.UswdsAccordion, HTMLStencilElement {
+    }
+    var HTMLUswdsAccordionElement: {
+        prototype: HTMLUswdsAccordionElement;
+        new (): HTMLUswdsAccordionElement;
+    };
+    interface HTMLUswdsAccordionItemElement extends Components.UswdsAccordionItem, HTMLStencilElement {
+    }
+    var HTMLUswdsAccordionItemElement: {
+        prototype: HTMLUswdsAccordionItemElement;
+        new (): HTMLUswdsAccordionItemElement;
     };
     interface HTMLUswdsExtendedHeaderElement extends Components.UswdsExtendedHeader, HTMLStencilElement {
     }
@@ -51,6 +73,12 @@ declare global {
     var HTMLUswdsHeaderElement: {
         prototype: HTMLUswdsHeaderElement;
         new (): HTMLUswdsHeaderElement;
+    };
+    interface HTMLUswdsModalElement extends Components.UswdsModal, HTMLStencilElement {
+    }
+    var HTMLUswdsModalElement: {
+        prototype: HTMLUswdsModalElement;
+        new (): HTMLUswdsModalElement;
     };
     interface HTMLUswdsSideNavElement extends Components.UswdsSideNav, HTMLStencilElement {
     }
@@ -71,19 +99,30 @@ declare global {
         new (): HTMLUswdsSideNavSubListElement;
     };
     interface HTMLElementTagNameMap {
-        "github-connector": HTMLGithubConnectorElement;
+        "design-token-management": HTMLDesignTokenManagementElement;
         "sandbox-main-content": HTMLSandboxMainContentElement;
+        "uswds-accordion": HTMLUswdsAccordionElement;
+        "uswds-accordion-item": HTMLUswdsAccordionItemElement;
         "uswds-extended-header": HTMLUswdsExtendedHeaderElement;
         "uswds-header": HTMLUswdsHeaderElement;
+        "uswds-modal": HTMLUswdsModalElement;
         "uswds-side-nav": HTMLUswdsSideNavElement;
         "uswds-side-nav-item": HTMLUswdsSideNavItemElement;
         "uswds-side-nav-sub-list": HTMLUswdsSideNavSubListElement;
     }
 }
 declare namespace LocalJSX {
-    interface GithubConnector {
+    interface DesignTokenManagement {
+        "json"?: string;
     }
     interface SandboxMainContent {
+    }
+    interface UswdsAccordion {
+        "accordionType"?: 'borderless' | 'bordered' | 'multiselectable';
+    }
+    interface UswdsAccordionItem {
+        "expanded"?: boolean;
+        "header"?: string;
     }
     interface UswdsExtendedHeader {
     }
@@ -91,6 +130,8 @@ declare namespace LocalJSX {
         "enableSearch"?: boolean;
         "headerTitle"?: string;
         "navItems"?: HeaderNavItem[];
+    }
+    interface UswdsModal {
     }
     interface UswdsSideNav {
         "region"?: string;
@@ -100,10 +141,13 @@ declare namespace LocalJSX {
     interface UswdsSideNavSubList {
     }
     interface IntrinsicElements {
-        "github-connector": GithubConnector;
+        "design-token-management": DesignTokenManagement;
         "sandbox-main-content": SandboxMainContent;
+        "uswds-accordion": UswdsAccordion;
+        "uswds-accordion-item": UswdsAccordionItem;
         "uswds-extended-header": UswdsExtendedHeader;
         "uswds-header": UswdsHeader;
+        "uswds-modal": UswdsModal;
         "uswds-side-nav": UswdsSideNav;
         "uswds-side-nav-item": UswdsSideNavItem;
         "uswds-side-nav-sub-list": UswdsSideNavSubList;
@@ -113,10 +157,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "github-connector": LocalJSX.GithubConnector & JSXBase.HTMLAttributes<HTMLGithubConnectorElement>;
+            "design-token-management": LocalJSX.DesignTokenManagement & JSXBase.HTMLAttributes<HTMLDesignTokenManagementElement>;
             "sandbox-main-content": LocalJSX.SandboxMainContent & JSXBase.HTMLAttributes<HTMLSandboxMainContentElement>;
+            "uswds-accordion": LocalJSX.UswdsAccordion & JSXBase.HTMLAttributes<HTMLUswdsAccordionElement>;
+            "uswds-accordion-item": LocalJSX.UswdsAccordionItem & JSXBase.HTMLAttributes<HTMLUswdsAccordionItemElement>;
             "uswds-extended-header": LocalJSX.UswdsExtendedHeader & JSXBase.HTMLAttributes<HTMLUswdsExtendedHeaderElement>;
             "uswds-header": LocalJSX.UswdsHeader & JSXBase.HTMLAttributes<HTMLUswdsHeaderElement>;
+            "uswds-modal": LocalJSX.UswdsModal & JSXBase.HTMLAttributes<HTMLUswdsModalElement>;
             "uswds-side-nav": LocalJSX.UswdsSideNav & JSXBase.HTMLAttributes<HTMLUswdsSideNavElement>;
             "uswds-side-nav-item": LocalJSX.UswdsSideNavItem & JSXBase.HTMLAttributes<HTMLUswdsSideNavItemElement>;
             "uswds-side-nav-sub-list": LocalJSX.UswdsSideNavSubList & JSXBase.HTMLAttributes<HTMLUswdsSideNavSubListElement>;

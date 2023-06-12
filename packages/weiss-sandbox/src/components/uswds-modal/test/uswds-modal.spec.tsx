@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { GithubConnector } from '../github-connector';
+import { UswdsModal } from '../uswds-modal';
 
-describe('github-connector', () => {
+describe('uswds-modal', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [GithubConnector],
-      html: `<github-connector></github-connector>`,
+      components: [UswdsModal],
+      html: `<uswds-modal></uswds-modal>`,
     });
     expect(page.root).toEqualHtml(`
-      <github-connector>
+      <uswds-modal>
         <mock:shadow-root>
           <slot></slot>
         </mock:shadow-root>
-      </github-connector>
+      </uswds-modal>
     `);
   });
 });

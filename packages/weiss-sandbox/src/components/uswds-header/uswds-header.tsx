@@ -120,7 +120,7 @@ export class UswdsHeader {
                 </label>
                 <input class="usa-input" id="search-field" type="search" name="search"></input>
                 <button class="usa-button" type="submit">
-                  <img src="./assets/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon" alt="Search"></img>
+                  <img src="./assets/uswds/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon" alt="Search"></img>
                 </button>
               </form>
             </section> : null}
