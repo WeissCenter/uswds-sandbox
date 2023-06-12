@@ -16,11 +16,11 @@ uswds.settings.version = 3;
 * Path settings
 * Set as many as you need
 */
-uswds.paths.dist.css = 'projects/component-library/src/assets/css';
-uswds.paths.dist.theme = 'projects/component-library/src/sass/uswds';
-uswds.paths.dist.img = 'projects/component-library/src/assets/img'
-uswds.paths.dist.fonts = 'projects/component-library/src/assets/fonts'
-uswds.paths.dist.js = 'projects/component-library/src/assets/js'
+uswds.paths.dist.css = 'projects/example/assets/uswds/css';
+uswds.paths.dist.theme = 'projects/example/assets/uswds/sass/uswds';
+uswds.paths.dist.img = 'projects/example/assets/uswds/img'
+uswds.paths.dist.fonts = 'projects/example/assets/uswds/fonts'
+uswds.paths.dist.js = 'projects/example/assets/uswds/js'
 /**
 * Exports
 * Add as many as you need
