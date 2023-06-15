@@ -12,7 +12,25 @@ import { defineCustomElements } from 'weiss-sandbox/loader';
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: () => defineCustomElements,
+      useFactory:  () => {
+
+        // append uswds scripts
+
+        const initScript = document.createElement("script");
+        initScript.src = "assets/uswds-init.min.js"
+        initScript.id = "uswds-init-script"
+
+        document.head.appendChild(initScript);
+
+        const mainScript = document.createElement("script");
+        mainScript.src = "assets/uswds.min.js"
+        mainScript.id = "uswds-init-script"
+
+        document.body.appendChild(mainScript)
+
+
+        return defineCustomElements;
+      },
       multi: true
     },
   ]

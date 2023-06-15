@@ -60,7 +60,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/example/src/favicon.ico",
-              "projects/example/src/assets"
+              "projects/example/src/assets",{
+                "glob": "**/*", "input": "./node_modules/@uswds/uswds/dist/js", "output": "./assets/"
+              }
             ],
             "styles": [
               "./node_modules/@uswds/uswds/dist/css/uswds.min.css",
