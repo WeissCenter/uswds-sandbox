@@ -8,15 +8,16 @@ import { Components } from 'weiss-sandbox';
 
 
 @ProxyCmp({
+  inputs: ['accordionType']
 })
 @Component({
-  selector: 'github-connector',
+  selector: 'uswds-accordion',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['accordionType'],
 })
-export class GithubConnector {
+export class UswdsAccordion {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -25,19 +26,41 @@ export class GithubConnector {
 }
 
 
-export declare interface GithubConnector extends Components.GithubConnector {}
+export declare interface UswdsAccordion extends Components.UswdsAccordion {}
+
+
+@ProxyCmp({
+  inputs: ['expanded', 'header']
+})
+@Component({
+  selector: 'uswds-accordion-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['expanded', 'header'],
+})
+export class UswdsAccordionItem {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface UswdsAccordionItem extends Components.UswdsAccordionItem {}
 
 
 @ProxyCmp({
 })
 @Component({
-  selector: 'sandbox-main-content',
+  selector: 'uswds-breadcrumb',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
   inputs: [],
 })
-export class SandboxMainContent {
+export class UswdsBreadcrumb {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -46,7 +69,49 @@ export class SandboxMainContent {
 }
 
 
-export declare interface SandboxMainContent extends Components.SandboxMainContent {}
+export declare interface UswdsBreadcrumb extends Components.UswdsBreadcrumb {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'uswds-button',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class UswdsButton {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface UswdsButton extends Components.UswdsButton {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'uswds-button-group',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class UswdsButtonGroup {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface UswdsButtonGroup extends Components.UswdsButtonGroup {}
 
 
 @ProxyCmp({
@@ -90,6 +155,27 @@ export class UswdsHeader {
 
 
 export declare interface UswdsHeader extends Components.UswdsHeader {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'uswds-modal',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class UswdsModal {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface UswdsModal extends Components.UswdsModal {}
 
 
 @ProxyCmp({
@@ -154,5 +240,27 @@ export class UswdsSideNavSubList {
 
 
 export declare interface UswdsSideNavSubList extends Components.UswdsSideNavSubList {}
+
+
+@ProxyCmp({
+  inputs: ['caption', 'tableType']
+})
+@Component({
+  selector: 'uswds-table',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['caption', 'tableType'],
+})
+export class UswdsTable {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface UswdsTable extends Components.UswdsTable {}
 
 

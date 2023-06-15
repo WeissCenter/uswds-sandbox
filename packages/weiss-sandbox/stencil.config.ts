@@ -6,7 +6,7 @@ export const config: Config = {
   outputTargets: [
     angularOutputTarget({
       componentCorePackage: 'weiss-sandbox',
-      excludeComponents: ['sandbox-main-content'],
+      excludeComponents: ['sandbox-main-content', 'design-token-management', 'code-snippet'],
       directivesProxyFile: '../angular-workspace/projects/component-library/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular-workspace/projects/component-library/src/lib/stencil-generated/index.ts'
     }),

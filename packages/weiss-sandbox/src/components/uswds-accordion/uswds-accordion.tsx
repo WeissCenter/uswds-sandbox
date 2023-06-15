@@ -7,7 +7,8 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class UswdsAccordion {
 
-  @Prop() accordionType : 'borderless' | 'bordered' | 'multiselectable' = 'borderless';
+  @Prop() accordionType : 'borderless' | 'bordered' | 'multiselectable' | 'multiselectable-bordered' = 'borderless';
+  
 
   render() {
 
@@ -25,13 +26,17 @@ export class UswdsAccordion {
         clazz = 'usa-accordion--multiselectable'
         break;
       }
+      case 'multiselectable-bordered':{
+        clazz = 'usa-accordion--multiselectable usa-accordion--bordered'
+        break;
+      }
     }
 
 
 
     return (
       <Host>
-        <div class={"usa-accordion" + " " + clazz} data-allow-multiple={this.accordionType === 'multiselectable'}>
+        <div class={"usa-accordion" + " " + clazz} data-allow-multiple={this.accordionType.includes("multiselectable")}>
           <slot></slot>
         </div>
       </Host>

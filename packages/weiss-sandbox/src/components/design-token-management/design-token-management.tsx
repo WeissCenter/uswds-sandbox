@@ -9,29 +9,22 @@ declare let ace: any;
 })
 export class DesignTokenManagement {
   
-  @Prop() json: string = `{
-      "dome": "dome"
-    }
+  public json: string = `{
+  "testing": "testing"
+}
   `
+  
 
+  componentWillLoad(){
 
-  componentDidLoad(){
-    const editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/javascript");
+    fetch("/assets/tokens/default.json")
+    .then((res) => res.text())
+    .then((result) => this.json = result)
 
-    editor.session.on('change', (delta) => console.log(delta))
-
-    editor.commands.addCommand({
-      name: 'save',
-      bindKey: {win: "Ctrl-S", "mac": "Cmd-S"},
-      exec: function(editor) {
-          console.log("saving", editor.session.getValue())
-      }
-  })
 
   }
-  
+
+
 
   render() {
 
@@ -40,11 +33,9 @@ export class DesignTokenManagement {
         <div class="design-token-management-content">
           <h2>Design Token Management</h2>
           <p>Here you can modify the default design tokens for the sandbox and see real time updates to the styling based on the tokens!</p>
-          <div class="editor-wrapper">
-            <div id="editor" class="editor"> 
-              {this.json}
-            </div>
-          </div>
+
+          <code-snippet code={this.json} readonly={true}></code-snippet>
+
         </div>
       </Host>
     );

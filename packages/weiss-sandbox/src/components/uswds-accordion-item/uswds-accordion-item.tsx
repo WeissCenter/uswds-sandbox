@@ -10,6 +10,7 @@ export class UswdsAccordionItem {
   @Prop() expanded: boolean = false;
 
   render() {
+    const id = crypto.randomUUID();
     return (
       <Host>
           <h4 class="usa-accordion__heading">
@@ -17,12 +18,12 @@ export class UswdsAccordionItem {
               type="button"
               class="usa-accordion__button"
               aria-expanded={`${this.expanded}`}
-              aria-controls={this.header + "-accordion-control"}
+              aria-controls={id + "-accordion-control"}
             >
               {this.header}
             </button>
           </h4>
-          <div id={this.header + "-accordion-control"} class="usa-accordion__content usa-prose" hidden={!this.expanded}>
+          <div id={id + "-accordion-control"} class="usa-accordion__content usa-prose" hidden={!this.expanded}>
               <slot></slot>
           </div>
       </Host>
