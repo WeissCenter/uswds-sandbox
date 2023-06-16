@@ -1,5 +1,6 @@
 import { Component, Host, Listen, Prop, State, h } from '@stencil/core';
-import {uswdsInitComponents} from '../../utils/utils';
+import { uswdsInitComponents } from '../../utils/utils';
+import { SandboxComponentItem } from '../../components';
 @Component({
   tag: 'sandbox-main-content',
   styleUrl: 'sandbox-main-content.css',
@@ -17,101 +18,51 @@ export class SandboxMainContent {
       'hash': 'header',
       'content': () => {
 
-        const code = `<uswds-header header-title="USWDS Sandbox"></uswds-header>`
-
-        const navItem = `export interface HeaderNavItem{
-          current: boolean;
-          menuTitle?: string;
-          type: HeaderNavItemType;
-          items?: HeaderSubMenuItem[];
-          item?: HeaderNavLink;
-      }
-      
-      export interface HeaderSubMenuItem{
-          label: string;
-          href: string;
-      }
-      
-      export interface HeaderNavLink{
-          label: string;
-          href: string;
-      }
-      
-      export enum HeaderNavItemType{
-          SUB_MENU,
-          NAV_LINK
-      }`
-
-        return <div>
-
-          <h2>Header</h2>
-
-          <p>USWDS header</p>
-
-          <h3>Basic Header</h3>
-
-          <uswds-header></uswds-header>
-
-          <h3>Implementation</h3>
-
-          <h4>Header Properties</h4>
-
-          <p>Defines the input properties of the component.</p>
-
-          <uswds-table>
-            <tr slot="header">
-              <th scope="col">Name</th>
-              <th scope="col">Type</th>
-              <th scope="col">Default</th>
-              <th scope="col">Description</th>
-            </tr>
-
-            <tr slot="body">
-              <th scope="row">headerTitle</th>
-              <td>
-                string
-              </td>
-              <td>Project Title</td>
-              <td>Header Text</td>
-            </tr>
-
-            <tr slot="body">
-              <th scope="row">enableSearch</th>
-              <td>
-                boolean
-              </td>
-              <td>false</td>
-              <td>Enable or disable search</td>
-            </tr>
+        const component : SandboxComponentItem = {
+          componentName: 'Header',
+          componentDesc: 'USWDS Header',
+          props: [
+            {name: 'headerTitle', type: 'string', default: 'Project Title', description: 'Title for the header'},
+            {name: 'enableSearch', type: 'boolean', default: 'false', description: 'Whether to enable to search bar for not'},
+            {name: 'navItems', type: 'HeaderNavItem[]', default: '[]', description: 'List of Navigation menus and items'}
+          ],
+          code: [
+            {code: `<uswds-header header-title="USWDS Sandbox"></uswds-header>`, language: 'html', accordionHeader: 'Header Example'},
+            {code: `export interface HeaderNavItem{
+              current: boolean;
+              menuTitle?: string;
+              type: HeaderNavItemType;
+              items?: HeaderSubMenuItem[];
+              item?: HeaderNavLink;
+          }
+          
+          export interface HeaderSubMenuItem{
+              label: string;
+              href: string;
+          }
+          
+          export interface HeaderNavLink{
+              label: string;
+              href: string;
+          }
+          
+          export enum HeaderNavItemType{
+              SUB_MENU,
+              NAV_LINK
+          }`, language: 'html', accordionHeader: 'HeaderNavItem Model'},
+          
+          
+          ]
+        }
 
 
+        return <sandbox-component component={component}>
 
-            <tr slot="body">
-              <th scope="row">navItems</th>
-              <td>
-                HeaderNavItem[]
-              </td>
-              <td>[]</td>
-              <td>List of nav menus and items</td>
-            </tr>
+          <uswds-header slot="component"></uswds-header>
+
+        </sandbox-component>
 
 
-          </uswds-table>
-
-        
-
-          <br />
-
-
-        <uswds-accordion  accordionType='bordered'>
-            <uswds-accordion-item header='Header Example'>
-              <code-snippet  readonly={true} lang="html" code={code} ></code-snippet>
-            </uswds-accordion-item>
-          </uswds-accordion>
-
-
-
-        </div>
 
 
       }
@@ -165,10 +116,10 @@ export class SandboxMainContent {
 
           <uswds-accordion accordionType='bordered'>
             <uswds-accordion-item header='Side Navigation Example'>
-              <code-snippet readonly={true} lang="html" code={code} ></code-snippet>
+              <code-snippet readonly={true} language="html" code={code} ></code-snippet>
             </uswds-accordion-item>
           </uswds-accordion>
-      
+
 
 
 
@@ -298,7 +249,7 @@ export class SandboxMainContent {
 
           <uswds-accordion accordionType='bordered'>
             <uswds-accordion-item header='Accordion Example'>
-              <code-snippet readonly={true} lang="html" code={code} ></code-snippet>
+              <code-snippet readonly={true} language="html" code={code} ></code-snippet>
             </uswds-accordion-item>
           </uswds-accordion>
 
@@ -396,7 +347,7 @@ export class SandboxMainContent {
       </tr>
     </uswds-table>`
 
-       
+
 
         return <div>
 
@@ -452,7 +403,7 @@ export class SandboxMainContent {
 
           <uswds-accordion accordionType='bordered'>
             <uswds-accordion-item header='Borderless Example'>
-              <code-snippet readonly={true} lang="html" code={borderlessCode} ></code-snippet>
+              <code-snippet readonly={true} language="html" code={borderlessCode} ></code-snippet>
             </uswds-accordion-item>
           </uswds-accordion>
 
@@ -503,14 +454,14 @@ export class SandboxMainContent {
 
           <uswds-accordion accordionType='bordered'>
             <uswds-accordion-item header='Bordered Example'>
-              <code-snippet readonly={true} lang="html" code={borderedCode} ></code-snippet>
+              <code-snippet readonly={true} language="html" code={borderedCode} ></code-snippet>
             </uswds-accordion-item>
           </uswds-accordion>
 
 
           <h3>Sortable Table</h3>
 
-          
+
 
           <uswds-table table-type="bordered">
 
@@ -607,12 +558,91 @@ export class SandboxMainContent {
     {
       "name": "Breadcrumb",
       "hash": "breadcrumb",
-      "content": () => <uswds-breadcrumb></uswds-breadcrumb>
+      "content": () => {
+
+        const code = '<uswds-breadcrumb></uswds-breadcrumb>'
+
+        const breadcrumbItem = `export interface BreadcrumbItem{
+          label: string;
+          href: string;
+          current: boolean;
+      }`
+
+        const basic = [
+          { current: false, href: "", label: "Home" },
+          { current: false, href: "", label: "Federal Contracting" },
+          { current: false, href: "", label: "Contracting assistance programs" },
+          { current: true, href: "", label: "Women-owned small business federal contracting program" }]
+
+        return <div>
+
+          <h2>Breadcrumb</h2>
+
+          <p>USWDS Breadcrumb</p>
+
+          <uswds-breadcrumb breadcrumbs={basic}></uswds-breadcrumb>
+
+
+          <h3>Implementation</h3>
+
+          <h4>Breadcrumb Properties</h4>
+
+          <p>Defines the input properties of the component.</p>
+
+          <uswds-table>
+            <tr slot="header">
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Default</th>
+              <th scope="col">Description</th>
+            </tr>
+
+            <tr slot="body">
+              <th scope="row">breadcrumbs</th>
+              <td>
+                BreadcrumbItem[]
+              </td>
+              <td>[]</td>
+              <td>List of breadcrumb items</td>
+            </tr>
+
+          </uswds-table>
+
+          <uswds-accordion accordionType='bordered'>
+            <uswds-accordion-item header='BreadcrumbItem'>
+              <code-snippet readonly={true} language="typescript" code={breadcrumbItem} ></code-snippet>
+            </uswds-accordion-item>
+          </uswds-accordion>
+
+          <br />
+
+          <uswds-accordion accordionType='bordered'>
+            <uswds-accordion-item header='Breadcrumb Example'>
+              <code-snippet readonly={true} language="html" code={code} ></code-snippet>
+            </uswds-accordion-item>
+          </uswds-accordion>
+
+
+
+
+
+        </div>
+
+
+
+      }
     },
     {
       "name": "Button",
       "hash": "button",
-      "content": () => <uswds-button></uswds-button>
+      "content": () => {
+        return <div>
+          <h2>Button</h2>
+
+          <p>USWDS Button</p>
+          <uswds-button></uswds-button>
+        </div>
+      }
     },
     {
       "name": "Button group",
@@ -627,11 +657,11 @@ export class SandboxMainContent {
   @Listen('hashchange', { target: 'window' })
   onHashChange(event: any) {
     this.hash = window.location.hash.split("#")[1];
-   // this.reloadUSWDS();
+    // this.reloadUSWDS();
   }
 
 
-  private reloadUSWDS(){
+  private reloadUSWDS() {
 
     const script = document.getElementById("uswds-script") as HTMLScriptElement;
 

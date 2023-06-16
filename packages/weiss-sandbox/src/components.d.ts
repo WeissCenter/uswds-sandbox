@@ -5,15 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SandboxComponentItem } from "./model/SandboxComponent";
+import { BreadcrumbItem } from "./model/BreadcrumbItem";
 import { HeaderNavItem } from "./model/HeaderNavMenu";
+export { SandboxComponentItem } from "./model/SandboxComponent";
+export { BreadcrumbItem } from "./model/BreadcrumbItem";
 export { HeaderNavItem } from "./model/HeaderNavMenu";
 export namespace Components {
     interface CodeSnippet {
         "code": string;
-        "lang": string;
+        "language": string;
         "readonly": boolean;
     }
     interface DesignTokenManagement {
+    }
+    interface SandboxComponent {
+        "component": SandboxComponentItem;
     }
     interface SandboxMainContent {
     }
@@ -25,8 +32,14 @@ export namespace Components {
         "header": string;
     }
     interface UswdsBreadcrumb {
+        "ariaLabel": string;
+        "breadcrumbs": BreadcrumbItem[];
     }
     interface UswdsButton {
+        "big": boolean;
+        "inverse": boolean;
+        "type": 'default'  | 'secondary' | 'accent-cool' | 'accent-warm' | 'base' | 'outline';
+        "unstyled": boolean;
     }
     interface UswdsButtonGroup {
     }
@@ -67,6 +80,12 @@ declare global {
     var HTMLDesignTokenManagementElement: {
         prototype: HTMLDesignTokenManagementElement;
         new (): HTMLDesignTokenManagementElement;
+    };
+    interface HTMLSandboxComponentElement extends Components.SandboxComponent, HTMLStencilElement {
+    }
+    var HTMLSandboxComponentElement: {
+        prototype: HTMLSandboxComponentElement;
+        new (): HTMLSandboxComponentElement;
     };
     interface HTMLSandboxMainContentElement extends Components.SandboxMainContent, HTMLStencilElement {
     }
@@ -149,6 +168,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "code-snippet": HTMLCodeSnippetElement;
         "design-token-management": HTMLDesignTokenManagementElement;
+        "sandbox-component": HTMLSandboxComponentElement;
         "sandbox-main-content": HTMLSandboxMainContentElement;
         "uswds-accordion": HTMLUswdsAccordionElement;
         "uswds-accordion-item": HTMLUswdsAccordionItemElement;
@@ -167,11 +187,14 @@ declare global {
 declare namespace LocalJSX {
     interface CodeSnippet {
         "code"?: string;
-        "lang"?: string;
+        "language"?: string;
         "onOnEditorChange"?: (event: CodeSnippetCustomEvent<any>) => void;
         "readonly"?: boolean;
     }
     interface DesignTokenManagement {
+    }
+    interface SandboxComponent {
+        "component"?: SandboxComponentItem;
     }
     interface SandboxMainContent {
     }
@@ -183,8 +206,14 @@ declare namespace LocalJSX {
         "header"?: string;
     }
     interface UswdsBreadcrumb {
+        "ariaLabel"?: string;
+        "breadcrumbs"?: BreadcrumbItem[];
     }
     interface UswdsButton {
+        "big"?: boolean;
+        "inverse"?: boolean;
+        "type"?: 'default'  | 'secondary' | 'accent-cool' | 'accent-warm' | 'base' | 'outline';
+        "unstyled"?: boolean;
     }
     interface UswdsButtonGroup {
     }
@@ -211,6 +240,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "code-snippet": CodeSnippet;
         "design-token-management": DesignTokenManagement;
+        "sandbox-component": SandboxComponent;
         "sandbox-main-content": SandboxMainContent;
         "uswds-accordion": UswdsAccordion;
         "uswds-accordion-item": UswdsAccordionItem;
@@ -232,6 +262,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "code-snippet": LocalJSX.CodeSnippet & JSXBase.HTMLAttributes<HTMLCodeSnippetElement>;
             "design-token-management": LocalJSX.DesignTokenManagement & JSXBase.HTMLAttributes<HTMLDesignTokenManagementElement>;
+            "sandbox-component": LocalJSX.SandboxComponent & JSXBase.HTMLAttributes<HTMLSandboxComponentElement>;
             "sandbox-main-content": LocalJSX.SandboxMainContent & JSXBase.HTMLAttributes<HTMLSandboxMainContentElement>;
             "uswds-accordion": LocalJSX.UswdsAccordion & JSXBase.HTMLAttributes<HTMLUswdsAccordionElement>;
             "uswds-accordion-item": LocalJSX.UswdsAccordionItem & JSXBase.HTMLAttributes<HTMLUswdsAccordionItemElement>;

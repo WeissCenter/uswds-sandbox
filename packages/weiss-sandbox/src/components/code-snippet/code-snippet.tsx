@@ -9,7 +9,7 @@ declare let ace: any;
 })
 export class CodeSnippet {
 
-  @Prop() lang: string = "json";
+  @Prop() language: string = "json";
   @Prop() code: string;
   @Prop() readonly: boolean = false;
 
@@ -32,7 +32,7 @@ export class CodeSnippet {
 
     editor.session.setValue(this.code)
 
-    switch(this.lang){
+    switch(this.language){
       case 'json':{
         editor.session.setMode("ace/mode/json");
         break;
