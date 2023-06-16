@@ -1,6 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-button-group',
   styleUrl: 'uswds-button-group.css',
@@ -9,6 +8,7 @@ import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 export class UswdsButtonGroup {
 
   render() {
+    uswdsInitComponents();
     return (
       <Host>
         <slot></slot>

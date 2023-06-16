@@ -1,6 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-side-nav-item',
   styleUrl: 'uswds-side-nav-item.css',
@@ -9,6 +8,7 @@ import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 export class UswdsSideNavItem {
 
   render() {
+    uswdsInitComponents();
     return (
       <Host>
         <li class="usa-sidenav__item">

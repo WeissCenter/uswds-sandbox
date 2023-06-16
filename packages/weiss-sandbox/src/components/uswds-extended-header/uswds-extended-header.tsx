@@ -1,6 +1,5 @@
 import { Component, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-extended-header',
   styleUrl: 'uswds-extended-header.css',
@@ -9,6 +8,7 @@ import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 export class UswdsExtendedHeader {
 
   render() {
+    uswdsInitComponents();
     return (
       <header class="usa-header usa-header--extended">
         <div class="usa-navbar">

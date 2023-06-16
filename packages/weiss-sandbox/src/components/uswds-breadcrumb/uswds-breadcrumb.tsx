@@ -1,6 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-breadcrumb',
   styleUrl: 'uswds-breadcrumb.css',
@@ -9,6 +8,7 @@ import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 export class UswdsBreadcrumb {
 
   render() {
+    uswdsInitComponents();
     return (
       <Host>
         <slot></slot>

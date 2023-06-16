@@ -1,6 +1,5 @@
 import { Component, Host, Listen, Prop, State, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'sandbox-main-content',
   styleUrl: 'sandbox-main-content.css',
@@ -650,12 +649,12 @@ export class SandboxMainContent {
 
   render() {
 
-    uswds.initComponents()
+    uswdsInitComponents();
 
     const component = this.Components.find((component) => component.hash === this.hash);
 
     if (!component) {
-      // dome
+      // TODO: do something if no components found
     }
 
 

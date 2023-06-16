@@ -1,6 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-accordion-item',
   styleUrl: 'uswds-accordion-item.css',
@@ -11,6 +10,7 @@ export class UswdsAccordionItem {
   @Prop() expanded: boolean = false;
 
   render() {
+    uswdsInitComponents();
     const id = crypto.randomUUID();
     return (
       <Host>

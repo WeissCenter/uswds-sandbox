@@ -1,6 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import * as uswds from '@uswds/uswds';
-import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
+import {uswdsInitComponents} from '../../utils/utils';
 
 @Component({
   tag: 'uswds-table',
@@ -13,6 +12,8 @@ export class UswdsTable {
   @Prop() caption: string = ``
 
   render() {
+
+    uswdsInitComponents();
 
     let clazz = '';
 
@@ -27,7 +28,7 @@ export class UswdsTable {
 
     }
 
-    uswds.initComponents();
+
 
 
     return (
