@@ -1,6 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { HeaderNavItem, HeaderNavItemType } from '../../model/HeaderNavMenu';
-
+import * as uswds from '@uswds/uswds';
+import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 @Component({
   tag: 'uswds-header',
   styleUrl: 'uswds-header.css',

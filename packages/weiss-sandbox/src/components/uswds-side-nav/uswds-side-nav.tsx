@@ -1,5 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-
+import * as uswds from '@uswds/uswds';
+import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 
 @Component({
   tag: 'uswds-side-nav',

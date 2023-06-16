@@ -1,5 +1,6 @@
 import { Component, Host, Listen, Prop, State, h } from '@stencil/core';
-
+import * as uswds from '@uswds/uswds';
+import * as uswdsInit from '@uswds/uswds/dist/js/uswds-init.js'
 @Component({
   tag: 'sandbox-main-content',
   styleUrl: 'sandbox-main-content.css',
@@ -396,6 +397,7 @@ export class SandboxMainContent {
       </tr>
     </uswds-table>`
 
+       
 
         return <div>
 
@@ -626,7 +628,7 @@ export class SandboxMainContent {
   @Listen('hashchange', { target: 'window' })
   onHashChange(event: any) {
     this.hash = window.location.hash.split("#")[1];
-    this.reloadUSWDS();
+   // this.reloadUSWDS();
   }
 
 
@@ -647,6 +649,8 @@ export class SandboxMainContent {
   }
 
   render() {
+
+    uswds.initComponents()
 
     const component = this.Components.find((component) => component.hash === this.hash);
 

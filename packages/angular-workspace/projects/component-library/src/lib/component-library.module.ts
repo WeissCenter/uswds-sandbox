@@ -16,17 +16,17 @@ import { defineCustomElements } from 'weiss-sandbox/loader';
 
         // append uswds scripts
 
-        const initScript = document.createElement("script");
-        initScript.src = "assets/uswds-init.min.js"
-        initScript.id = "uswds-init-script"
+        // const initScript = document.createElement("script");
+        // initScript.src = "assets/uswds-init.min.js"
+        // initScript.id = "uswds-init-script"
 
-        document.head.appendChild(initScript);
+        // document.head.appendChild(initScript);
 
-        const mainScript = document.createElement("script");
-        mainScript.src = "assets/uswds.min.js"
-        mainScript.id = "uswds-init-script"
+        // const mainScript = document.createElement("script");
+        // mainScript.src = "assets/uswds.min.js"
+        // mainScript.id = "uswds-script"
 
-        document.body.appendChild(mainScript)
+        // document.body.appendChild(mainScript)
 
 
         return defineCustomElements;
