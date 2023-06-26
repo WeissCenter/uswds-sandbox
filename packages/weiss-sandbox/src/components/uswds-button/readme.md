@@ -5,6 +5,16 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property   | Attribute  | Description | Type                                                                                | Default     |
+| ---------- | ---------- | ----------- | ----------------------------------------------------------------------------------- | ----------- |
+| `big`      | `big`      |             | `boolean`                                                                           | `false`     |
+| `inverse`  | `inverse`  |             | `boolean`                                                                           | `false`     |
+| `type`     | `type`     |             | `"accent-cool" \| "accent-warm" \| "base" \| "default" \| "outline" \| "secondary"` | `'default'` |
+| `unstyled` | `unstyled` |             | `boolean`                                                                           | `false`     |
+
+
 ## Dependencies
 
 ### Used by

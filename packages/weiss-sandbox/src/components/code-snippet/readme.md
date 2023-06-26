@@ -10,15 +10,16 @@
 | Property   | Attribute  | Description | Type      | Default     |
 | ---------- | ---------- | ----------- | --------- | ----------- |
 | `code`     | `code`     |             | `string`  | `undefined` |
-| `lang`     | `lang`     |             | `string`  | `"json"`    |
+| `language` | `language` |             | `string`  | `"json"`    |
 | `readonly` | `readonly` |             | `boolean` | `false`     |
 
 
 ## Events
 
-| Event            | Description | Type               |
-| ---------------- | ----------- | ------------------ |
-| `onEditorChange` |             | `CustomEvent<any>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `editorChange` |             | `CustomEvent<any>` |
+| `save`         |             | `CustomEvent<any>` |
 
 
 ## Dependencies
@@ -26,13 +27,13 @@
 ### Used by
 
  - [design-token-management](../design-token-management)
- - [sandbox-main-content](../sandbox-main-content)
+ - [sandbox-component](../sandbox-component)
 
 ### Graph
 ```mermaid
 graph TD;
   design-token-management --> code-snippet
-  sandbox-main-content --> code-snippet
+  sandbox-component --> code-snippet
   style code-snippet fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -2,6 +2,7 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
+  d.SandboxComponent,
   d.UswdsAccordion,
   d.UswdsAccordionItem,
   d.UswdsBreadcrumb,

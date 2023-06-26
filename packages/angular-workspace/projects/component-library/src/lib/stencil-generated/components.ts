@@ -8,6 +8,28 @@ import { Components } from 'weiss-sandbox';
 
 
 @ProxyCmp({
+  inputs: ['component']
+})
+@Component({
+  selector: 'sandbox-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['component'],
+})
+export class SandboxComponent {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SandboxComponent extends Components.SandboxComponent {}
+
+
+@ProxyCmp({
   inputs: ['accordionType']
 })
 @Component({
@@ -52,13 +74,14 @@ export declare interface UswdsAccordionItem extends Components.UswdsAccordionIte
 
 
 @ProxyCmp({
+  inputs: ['ariaLabel', 'breadcrumbs']
 })
 @Component({
   selector: 'uswds-breadcrumb',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['ariaLabel', 'breadcrumbs'],
 })
 export class UswdsBreadcrumb {
   protected el: HTMLElement;
@@ -73,13 +96,14 @@ export declare interface UswdsBreadcrumb extends Components.UswdsBreadcrumb {}
 
 
 @ProxyCmp({
+  inputs: ['big', 'inverse', 'type', 'unstyled']
 })
 @Component({
   selector: 'uswds-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['big', 'inverse', 'type', 'unstyled'],
 })
 export class UswdsButton {
   protected el: HTMLElement;

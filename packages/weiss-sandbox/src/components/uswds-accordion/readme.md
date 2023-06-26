@@ -16,11 +16,13 @@
 
 ### Used by
 
+ - [sandbox-component](../sandbox-component)
  - [sandbox-main-content](../sandbox-main-content)
 
 ### Graph
 ```mermaid
 graph TD;
+  sandbox-component --> uswds-accordion
   sandbox-main-content --> uswds-accordion
   style uswds-accordion fill:#f9f,stroke:#333,stroke-width:4px
 ```
