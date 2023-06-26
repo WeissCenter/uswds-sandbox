@@ -188,7 +188,8 @@ declare namespace LocalJSX {
     interface CodeSnippet {
         "code"?: string;
         "language"?: string;
-        "onOnEditorChange"?: (event: CodeSnippetCustomEvent<any>) => void;
+        "onEditorChange"?: (event: CodeSnippetCustomEvent<any>) => void;
+        "onSave"?: (event: CodeSnippetCustomEvent<any>) => void;
         "readonly"?: boolean;
     }
     interface DesignTokenManagement {

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
 
 declare let ace: any;
 
@@ -9,19 +9,38 @@ declare let ace: any;
 })
 export class DesignTokenManagement {
   
-  public json: string = `{
-  "testing": "testing"
-}
-  `
+  public json: string = localStorage.getItem("designTokens") ? localStorage.getItem("designTokens") : `{"$theme-color-primary": "blue-60"}`
+
+  @State() public compiling = false;
   
 
-  componentWillLoad(){
 
-    fetch("/assets/tokens/default.json")
-    .then((res) => res.text())
-    .then((result) => this.json = result)
+  onSave(event){
+
+    localStorage.setItem("designTokens", event.detail)
+
+    this.compiling = true;
+
+    fetch("http://localhost:8080/compile", {method: 'POST', body: event.detail, headers: {'Content-Type': 'application/json'}})
+    .then((res) => res.json())
+    .then((res) => {
+      this.compiling = false;
+
+      // find existing style
+
+      const existing = document.getElementById('edited-scss');
+
+      const style = existing ? existing :  document.createElement("style");
+
+      style.innerHTML = res.data;
+      style.id = 'edited-scss'
 
 
+      document.head.appendChild(style)
+
+
+      
+    })
   }
 
 
@@ -34,7 +53,13 @@ export class DesignTokenManagement {
           <h2>Design Token Management</h2>
           <p>Here you can modify the default design tokens for the sandbox and see real time updates to the styling based on the tokens!</p>
 
-          <code-snippet code={this.json} readonly={true}></code-snippet>
+          {
+            this.compiling ?           <div class="token-management-compiling">
+            <h3>Compiling....</h3>
+          </div> : ''
+          }
+
+          <code-snippet  onSave={(event) => this.onSave(event)} code={this.json} readonly={false}></code-snippet>
 
         </div>
       </Host>

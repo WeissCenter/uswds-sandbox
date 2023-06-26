@@ -16,7 +16,8 @@ export class CodeSnippet {
   public id: string;
 
 
-  @Event() onEditorChange: EventEmitter<any>;
+  @Event() editorChange: EventEmitter<any>;
+  @Event() save: EventEmitter<any>;
 
   componentWillRender(){
     this.id = crypto.randomUUID();
@@ -48,13 +49,13 @@ export class CodeSnippet {
     }
 
 
-    editor.session.on('change', (delta) => this.onEditorChange.emit(delta))
+    editor.session.on('change', (delta) => this.editorChange.emit(delta))
 
     editor.commands.addCommand({
       name: 'save',
       bindKey: {win: "Ctrl-S", "mac": "Cmd-S"},
-      exec: function(editor) {
-          console.log("saving", editor.session.getValue())
+      exec: (editor) => {
+          this.save.emit(editor.session.getValue())
       }
   })
 }
