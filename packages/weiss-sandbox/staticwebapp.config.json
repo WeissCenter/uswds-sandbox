@@ -1,0 +1,8 @@
+{
+    "mimeTypes": {
+        ".woff": "application/font-woff",
+        ".woff2": "application/font-woff",
+        ".svg": "image/svg+xml"
+      }
+}
+
