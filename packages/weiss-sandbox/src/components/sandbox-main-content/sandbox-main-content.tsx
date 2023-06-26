@@ -50,7 +50,7 @@ export class SandboxMainContent {
           export enum HeaderNavItemType{
               SUB_MENU,
               NAV_LINK
-          }`, language: 'html', accordionHeader: 'HeaderNavItem Model'
+          }`, language: 'javascript', accordionHeader: 'HeaderNavItem Model'
             },
 
 
@@ -292,7 +292,11 @@ export class SandboxMainContent {
             ]},
             'Table Slots': {
               description: 'Defines the available slots for the component',
-              props: [{ name: 'header', type: 'any', default: '', description: 'the type of table' }]
+              props: [
+                { name: 'header', description: 'table headers' },
+                { name: 'body', description: 'table body' }
+              
+              ]
             }
           },
           code: [
@@ -656,13 +660,29 @@ export class SandboxMainContent {
       "hash": "breadcrumb",
       "content": () => {
 
-        const code = '<uswds-breadcrumb></uswds-breadcrumb>'
+        const component: SandboxComponentItem = {
+          componentName: 'Breadcrumb',
+          componentDesc: 'USWDS Breadcrumb',
+          props: {
+            'Breadcrumb Properties': {props: [
+              { name: 'breadcrumbs', type: 'BreadcrumbItem[]', default: '[]', description: 'list of breadcrumb items to display' }
+            ]},
+          },
+          code: [
+            {
+              code: `<uswds-breadcrumb></uswds-breadcrumb>`, language: 'html', accordionHeader: 'Breadcrumb Example'
+            },
+            {
+              code: `export interface BreadcrumbItem{
+                label: string;
+                href: string;
+                current: boolean;
+            }`, language: 'javascript', accordionHeader: 'BreadcrumbItem Interface'
+            }
 
-        const breadcrumbItem = `export interface BreadcrumbItem{
-          label: string;
-          href: string;
-          current: boolean;
-      }`
+          ]
+        }
+
 
         const basic = [
           { current: false, href: "", label: "Home" },
@@ -670,62 +690,11 @@ export class SandboxMainContent {
           { current: false, href: "", label: "Contracting assistance programs" },
           { current: true, href: "", label: "Women-owned small business federal contracting program" }]
 
-        return <div>
+          return <sandbox-component component={component}>
 
-          <h2>Breadcrumb</h2>
+            <uswds-breadcrumb slot="component" breadcrumbs={basic}></uswds-breadcrumb>
 
-          <p>USWDS Breadcrumb</p>
-
-          <uswds-breadcrumb breadcrumbs={basic}></uswds-breadcrumb>
-
-
-          <h3>Implementation</h3>
-
-          <h4>Breadcrumb Properties</h4>
-
-          <p>Defines the input properties of the component.</p>
-
-          <uswds-table>
-            <tr slot="header">
-              <th scope="col">Name</th>
-              <th scope="col">Type</th>
-              <th scope="col">Default</th>
-              <th scope="col">Description</th>
-            </tr>
-
-            <tr slot="body">
-              <th scope="row">breadcrumbs</th>
-              <td>
-                BreadcrumbItem[]
-              </td>
-              <td>[]</td>
-              <td>List of breadcrumb items</td>
-            </tr>
-
-          </uswds-table>
-
-          <uswds-accordion accordionType='bordered'>
-            <uswds-accordion-item header='BreadcrumbItem'>
-              <code-snippet readonly={true} language="typescript" code={breadcrumbItem} ></code-snippet>
-            </uswds-accordion-item>
-          </uswds-accordion>
-
-          <br />
-
-          <uswds-accordion accordionType='bordered'>
-            <uswds-accordion-item header='Breadcrumb Example'>
-              <code-snippet readonly={true} language="html" code={code} ></code-snippet>
-            </uswds-accordion-item>
-          </uswds-accordion>
-
-
-
-
-
-        </div>
-
-
-
+          </sandbox-component>
       }
     },
     {

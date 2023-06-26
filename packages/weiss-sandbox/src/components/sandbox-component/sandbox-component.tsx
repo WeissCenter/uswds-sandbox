@@ -12,6 +12,10 @@ export class SandboxComponent {
 
   private renderTable(name: string, description: string, props: SandboxComponentProperty[]){
 
+    const typeHeader = props[0].type ? <th scope="col">Type</th> : '';
+    const defaultHeader = props[0].default ? <th scope="col">Default</th> : '';
+
+
     return <div class="component-properties">
   
     <h4>{name}</h4>
@@ -21,17 +25,15 @@ export class SandboxComponent {
     <uswds-table>
       <tr slot="header">
         <th scope="col">Name</th>
-        <th scope="col">Type</th>
-        <th scope="col">Default</th>
+        {typeHeader}
+        {defaultHeader}
         <th scope="col">Description</th>
       </tr>
 
       {props.map((prop) => <tr slot="body">
         <th scope="row">{prop.name}</th>
-        <td>
-          {prop.type}
-        </td>
-        <td>{prop.default}</td>
+        {prop.type ? <td>{prop.type}</td> : ''}
+        {prop.default ? <td>{prop.default}</td> : ''}
         <td>{prop.description}</td>
       </tr>)}
 

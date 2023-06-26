@@ -7,8 +7,8 @@ export interface SandboxComponentItem {
 
 export interface SandboxComponentProperty{
     name: string;
-    type: string;
-    default: string;
+    type?: string;
+    default?: string;
     description: string;
 }
 
