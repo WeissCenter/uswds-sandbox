@@ -2,6 +2,7 @@ import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 const sass = require('sass-embedded');
 import {parse} from 'postcss-scss';
 
+
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
 
@@ -10,11 +11,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         const compiled = await compileSASS({
             "$theme-color-primary": "\"red-50\""
         })
-        const name = (req.query.name || (req.body && req.body.name));
-        const responseMessage = name
-            ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-            : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
-    
+
         context.res = {
             // status: 200, /* Defaults to 200 */
             body: compiled.css
@@ -27,24 +24,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
 };
 
-
-
-function checkForErrors(variable: string){
-
-    console.log("checking variable", variable)
-
-    const scss = 
-    `@use "uswds-core" with (
-        $theme-show-notifications: false,
-        $theme-show-compile-warnings: false,
-        ${variable}
-    );
-    @forward "uswds-theme";
-    @forward "uswds";
-    `
-
-    return sass.compileStringAsync(scss, {loadPaths: ['/home/site/wwwroot/node_modules/@uswds', '/home/site/wwwroot/node_modules/@uswds/uswds/packages', '/home/site/wwwroot/node_modules/@uswds/uswds/dist/theme'], style: 'compressed'})
-}
 
 
 async function compileSASS(variables: {[variable: string]: string}){
@@ -62,7 +41,9 @@ async function compileSASS(variables: {[variable: string]: string}){
     @forward "uswds";
     `
 
-    return sass.compileStringAsync(scss, {loadPaths: ['/home/site/wwwroot/node_modules/@uswds', '/home/site/wwwroot/node_modules/@uswds/uswds/packages', '/home/site/wwwroot/node_modules/@uswds/uswds/dist/theme'], style: 'compressed'})
+    const prefix = process.env.AZURE_FUNCTIONS_ENVIRONMENT === 'Development' ? '../../../' : '/home/site/wwwroot/';
+
+    return sass.compileStringAsync(scss, {loadPaths: [`${prefix}node_modules/@uswds`, `${prefix}node_modules/@uswds/uswds/packages`, `${prefix}node_modules/@uswds/uswds/dist/theme`], style: 'compressed'})
 }
 
 
