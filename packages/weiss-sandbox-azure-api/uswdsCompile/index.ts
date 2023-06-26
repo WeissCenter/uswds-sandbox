@@ -43,7 +43,7 @@ function checkForErrors(variable: string){
     @forward "uswds";
     `
 
-    return sass.compileStringAsync(scss, {loadPaths: ['../node_modules/@uswds', './uswds/packages', './uswds/dist/theme'], style: 'compressed'})
+    return sass.compileStringAsync(scss, {loadPaths: ['./node_modules/@uswds', '.node_modules/@uswds/uswds/packages', './node_modules/@uswds/uswds/dist/theme'], style: 'compressed'})
 }
 
 
