@@ -21,7 +21,7 @@ export class DesignTokenManagement {
 
     this.compiling = true;
 
-    const url = window.location.hostname === 'localhost' ? 'http://localhost:7071/uswdsCompile' : '/api/uswdsCompile'
+    const url = window.location.hostname === 'localhost' ? 'http://localhost:7071/api/uswdsCompile' : '/api/uswdsCompile'
 
     fetch(url, {method: 'POST', body: event.detail, headers: {'Content-Type': 'application/json'}})
     .then((res) => res.json())

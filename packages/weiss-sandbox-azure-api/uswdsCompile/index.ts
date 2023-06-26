@@ -10,6 +10,9 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 
         if(!req.body){
             context.res = {
+                headers: {   
+                    'Access-Control-Allow-Origin': '*',
+                  },
                 status: 400,
                 body: {success: false, err: 'missing body'}
             };
@@ -17,9 +20,12 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
         }
 
 
-        const compiled = await compileSASS(JSON.parse(req.body))
+        const compiled = await compileSASS(req.body)
 
         context.res = {
+            headers: {   
+                'Access-Control-Allow-Origin': '*',
+              },
             // status: 200, /* Defaults to 200 */
             body: {success: true, data: compiled.css}
         };
