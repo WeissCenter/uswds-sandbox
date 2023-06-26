@@ -62,7 +62,7 @@ async function compileSASS(variables: {[variable: string]: string}){
     @forward "uswds";
     `
 
-    return sass.compileStringAsync(scss, {loadPaths: ['../../node_modules/@uswds', '../../node_modules/@uswds/uswds/packages', '../../node_modules/@uswds/uswds/dist/theme'], style: 'compressed'})
+    return sass.compileStringAsync(scss, {loadPaths: ['/home/site/wwwroot/node_modules/@uswds', '/home/site/wwwroot/node_modules/@uswds/uswds/packages', '/home/site/wwwroot/node_modules/@uswds/uswds/dist/theme'], style: 'compressed'})
 }
 
 
