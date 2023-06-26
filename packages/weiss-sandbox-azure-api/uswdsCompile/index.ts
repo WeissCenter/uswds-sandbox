@@ -1,8 +1,9 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+import { readdirSync } from "fs";
 const sass = require('sass-embedded');
 import {parse} from 'postcss-scss';
 
-
+const prefix = process.env.AZURE_FUNCTIONS_ENVIRONMENT === 'Development' ? '../../' : '/home/site/wwwroot/';
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
 
@@ -18,6 +19,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             };
             return;
         }
+
+        context.log("APP ROOT", readdirSync(prefix))
 
 
         const compiled = await compileSASS(req.body)
@@ -54,7 +57,9 @@ async function compileSASS(variables: {[variable: string]: string}){
     @forward "uswds";
     `
 
-    const prefix = process.env.AZURE_FUNCTIONS_ENVIRONMENT === 'Development' ? '../../' : '/home/site/wwwroot/';
+ 
+
+    
 
     return sass.compileStringAsync(scss, {loadPaths: [`${prefix}node_modules/@uswds`, `${prefix}node_modules/@uswds/uswds/packages`, `${prefix}node_modules/@uswds/uswds/dist/theme`], style: 'compressed'})
 }
