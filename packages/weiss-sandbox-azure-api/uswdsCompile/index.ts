@@ -6,15 +6,22 @@ import {parse} from 'postcss-scss';
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
     context.log('HTTP trigger function processed a request.');
 
-    try{
+    try{   
 
-        const compiled = await compileSASS({
-            "$theme-color-primary": "\"red-50\""
-        })
+        if(!req.body){
+            context.res = {
+                status: 400,
+                body: {success: false, err: 'missing body'}
+            };
+            return;
+        }
+
+
+        const compiled = await compileSASS(JSON.parse(req.body))
 
         context.res = {
             // status: 200, /* Defaults to 200 */
-            body: compiled.css
+            body: {success: true, data: compiled.css}
         };
 
     }catch(err){
@@ -41,7 +48,7 @@ async function compileSASS(variables: {[variable: string]: string}){
     @forward "uswds";
     `
 
-    const prefix = process.env.AZURE_FUNCTIONS_ENVIRONMENT === 'Development' ? '../../../' : '/home/site/wwwroot/';
+    const prefix = process.env.AZURE_FUNCTIONS_ENVIRONMENT === 'Development' ? '../../' : '/home/site/wwwroot/';
 
     return sass.compileStringAsync(scss, {loadPaths: [`${prefix}node_modules/@uswds`, `${prefix}node_modules/@uswds/uswds/packages`, `${prefix}node_modules/@uswds/uswds/dist/theme`], style: 'compressed'})
 }
