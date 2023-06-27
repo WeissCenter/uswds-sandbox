@@ -20,8 +20,6 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             return;
         }
 
-        context.log("APP ROOT", readdirSync(prefix))
-
 
         const compiled = await compileSASS(req.body)
 
