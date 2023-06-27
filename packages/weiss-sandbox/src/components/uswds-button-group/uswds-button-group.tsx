@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, Host, h, Element, State, Prop } from '@stencil/core';
 import {uswdsInitComponents} from '../../utils/utils';
 @Component({
   tag: 'uswds-button-group',
@@ -8,6 +8,8 @@ import {uswdsInitComponents} from '../../utils/utils';
 export class UswdsButtonGroup {
   @Element() host: HTMLDivElement;
   @State() children: string[] = [];
+
+  @Prop() segmented: boolean = false;
 
   componentWillLoad(){
     this.children = Array.from(this.host.children)
@@ -27,11 +29,16 @@ export class UswdsButtonGroup {
   render() {
     uswdsInitComponents();
 
+    let clazz = 'usa-button-group';
+
+    if(this.segmented){
+      clazz += ' usa-button-group--segmented'
+    }
 
     return (
       <Host>
 
-        <ul class="usa-button-group">
+        <ul class={clazz}>
 
           {this.children
            .map((child) =>  <li class="usa-button-group__item" innerHTML={child}></li>)

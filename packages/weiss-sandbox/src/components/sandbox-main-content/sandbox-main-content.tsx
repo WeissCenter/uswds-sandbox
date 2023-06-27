@@ -131,11 +131,13 @@ export class SandboxMainContent {
           componentURL: 'https://designsystem.digital.gov/components/accordion/',
           componentDesc: 'USWDS Accordion',
           props: {
-            'Accordion Properties': {description: '', props: [{ name: 'accordionType', type: 'borderless | bordered | multiselectable | multiselectable-bordered', default: 'borderless', description: 'the type of accordion items to show' }]},
-            'Accordion Item Properties': {description: '', props: [
-              { name: 'header', type: 'string', default: 'null', description: 'Header of the accordion item' },
-              { name: 'expanded', type: 'boolean', default: 'false', description: 'Whether the accordion item is expanded by default or not' },
-            ]}
+            'Accordion Properties': { description: '', props: [{ name: 'accordionType', type: 'borderless | bordered | multiselectable | multiselectable-bordered', default: 'borderless', description: 'the type of accordion items to show' }] },
+            'Accordion Item Properties': {
+              description: '', props: [
+                { name: 'header', type: 'string', default: 'null', description: 'Header of the accordion item' },
+                { name: 'expanded', type: 'boolean', default: 'false', description: 'Whether the accordion item is expanded by default or not' },
+              ]
+            }
           },
           code: [
             {
@@ -290,16 +292,18 @@ export class SandboxMainContent {
           componentURL: 'https://designsystem.digital.gov/components/table/',
           componentDesc: 'USWDS Table',
           props: {
-            'Table Properties': {props: [
-              { name: 'tableType', type: 'borderless | bordered', default: 'borderless', description: 'the type of table' },
-              { name: 'caption', type: 'string', default: 'null', description: 'table caption' }
-            ]},
+            'Table Properties': {
+              props: [
+                { name: 'tableType', type: 'borderless | bordered', default: 'borderless', description: 'the type of table' },
+                { name: 'caption', type: 'string', default: 'null', description: 'table caption' }
+              ]
+            },
             'Table Slots': {
               description: 'Defines the available slots for the component',
               props: [
                 { name: 'header', description: 'table headers' },
                 { name: 'body', description: 'table body' }
-              
+
               ]
             }
           },
@@ -669,9 +673,11 @@ export class SandboxMainContent {
           componentURL: 'https://designsystem.digital.gov/components/breadcrumb/',
           componentDesc: 'USWDS Breadcrumb',
           props: {
-            'Breadcrumb Properties': {props: [
-              { name: 'breadcrumbs', type: 'BreadcrumbItem[]', default: '[]', description: 'list of breadcrumb items to display' }
-            ]},
+            'Breadcrumb Properties': {
+              props: [
+                { name: 'breadcrumbs', type: 'BreadcrumbItem[]', default: '[]', description: 'list of breadcrumb items to display' }
+              ]
+            },
           },
           code: [
             {
@@ -695,11 +701,11 @@ export class SandboxMainContent {
           { current: false, href: "", label: "Contracting assistance programs" },
           { current: true, href: "", label: "Women-owned small business federal contracting program" }]
 
-          return <sandbox-component component={component}>
+        return <sandbox-component component={component}>
 
-            <uswds-breadcrumb slot="component" breadcrumbs={basic}></uswds-breadcrumb>
+          <uswds-breadcrumb slot="component" breadcrumbs={basic}></uswds-breadcrumb>
 
-          </sandbox-component>
+        </sandbox-component>
       }
     },
     {
@@ -713,12 +719,14 @@ export class SandboxMainContent {
           componentURL: 'https://designsystem.digital.gov/components/button/',
           componentDesc: 'USWDS Button',
           props: {
-            'Button Properties': {props: [
-              { name: 'unstyled', type: 'boolean', default: 'false', description: 'button is unstyled or not' },
-              { name: 'inverse', type: 'boolean', default: 'false', description: 'button is inversed or not' },
-              { name: 'big', type: 'boolean', default: 'false', description: 'button is big or not' },
-              { name: 'type', type: 'default | secondary | accent-cool | accent-warm | base | outline', default: 'default', description: 'button type' }
-            ]},
+            'Button Properties': {
+              props: [
+                { name: 'unstyled', type: 'boolean', default: 'false', description: 'button is unstyled or not' },
+                { name: 'inverse', type: 'boolean', default: 'false', description: 'button is inversed or not' },
+                { name: 'big', type: 'boolean', default: 'false', description: 'button is big or not' },
+                { name: 'type', type: 'default | secondary | accent-cool | accent-warm | base | outline', default: 'default', description: 'button type' }
+              ]
+            },
           },
           code: [
             {
@@ -733,9 +741,9 @@ export class SandboxMainContent {
 
 
         return <sandbox-component component={component}>
-            <uswds-button slot="component" onClick={() => window.alert("Hello from uswds button!")}>
-              Default
-            </uswds-button>
+          <uswds-button slot="component" onClick={() => window.alert("Hello from uswds button!")}>
+            Default
+          </uswds-button>
         </sandbox-component>
       }
     },
@@ -747,18 +755,20 @@ export class SandboxMainContent {
         const component: SandboxComponentItem = {
           componentName: 'Button Group',
           componentURL: 'https://designsystem.digital.gov/components/button-group/',
-          componentDesc: 'USWDS Button',
+          componentDesc: 'USWDS Button Group',
           props: {
-            'Button Properties': {props: [
-              { name: 'unstyled', type: 'boolean', default: 'false', description: 'button is unstyled or not' },
-              { name: 'inverse', type: 'boolean', default: 'false', description: 'button is inversed or not' },
-              { name: 'big', type: 'boolean', default: 'false', description: 'button is big or not' },
-              { name: 'type', type: 'default | secondary | accent-cool | accent-warm | base | outline', default: 'default', description: 'button type' }
-            ]},
+            'Button Group Properties': {
+              props: [
+                { name: 'segmented', type: 'boolean', default: 'false', description: 'segmented button group toggle' },
+              ]
+            },
           },
           code: [
             {
-              code: `<uswds-button>Default</uswds-button>`, language: 'html', accordionHeader: 'Button Example'
+              code: `<uswds-button-group slot="component">
+              <uswds-button>Default 1</uswds-button>
+              <uswds-button>Default 2</uswds-button>
+            </uswds-button-group>`, language: 'html', accordionHeader: 'Button Group Example'
             },
 
           ]
@@ -768,8 +778,156 @@ export class SandboxMainContent {
         return <sandbox-component component={component}>
           <uswds-button-group slot="component">
             <uswds-button>Default 1</uswds-button>
-            <uswds-button unstyled={true}>Default 2</uswds-button>
+            <uswds-button type="outline">Default 2</uswds-button>
           </uswds-button-group>
+        </sandbox-component>
+
+
+      }
+    },
+    {
+      "name": "Alert",
+      "hash": "alert",
+      "content": () => {
+
+        const component: SandboxComponentItem = {
+          componentName: 'Alert',
+          componentURL: 'https://designsystem.digital.gov/components/alert/',
+          componentDesc: 'USWDS Alert',
+          props: {
+            'Alert Properties': {
+              props: [
+                { name: 'type', type: 'info | warning | error | success', default: 'info', description: 'the alert type' },
+                { name: 'slim', type: 'boolean', default: 'false', description: 'slim mode for the alert or not' },
+                { name: 'icon', type: 'boolean', default: 'true', description: 'icon for the alert toggle' },
+              ]
+            },
+            'Alert Slots': {
+              props: [
+                { name: 'heading', description: 'the alert header' },
+                { name: '<default slot>', description: 'the alert body' },
+              ]
+            },
+          },
+          code: [
+            {
+              code: `<uswds-alert></uswds-alert>`, language: 'html', accordionHeader: 'Alert Example'
+            },
+
+          ]
+        }
+
+        return <sandbox-component component={component}>
+
+          <uswds-alert slot="component" type="info">
+
+            <div slot="heading">Informative status</div>
+
+            Lorem ipsum dolor sit amet,
+            <a class="usa-link" href="javascript:void(0);">consectetur adipiscing</a>
+            elit, sed do eiusmod.
+
+
+          </uswds-alert>
+
+
+          <uswds-alert slot="component" type="warning">
+
+            <div slot="heading">Warning status</div>
+
+            Lorem ipsum dolor sit amet,
+            <a class="usa-link" href="javascript:void(0);">consectetur adipiscing</a>
+            elit, sed do eiusmod.
+
+
+          </uswds-alert>
+
+          <uswds-alert slot="component" type="error">
+
+            <div slot="heading">Error status</div>
+
+            Lorem ipsum dolor sit amet,
+            <a class="usa-link" href="javascript:void(0);">consectetur adipiscing</a>
+            elit, sed do eiusmod.
+
+
+          </uswds-alert>
+
+
+          <uswds-alert slot="component" type="success">
+
+            <div slot="heading">Success status</div>
+
+            Lorem ipsum dolor sit amet,
+            <a class="usa-link" href="javascript:void(0);">consectetur adipiscing</a>
+            elit, sed do eiusmod.
+
+
+          </uswds-alert>
+
+        </sandbox-component>
+
+
+
+      }
+    },
+    {
+      "name": "Card",
+      "hash": "card",
+      "content": () => {
+
+        const component: SandboxComponentItem = {
+          componentName: 'Card',
+          componentURL: 'https://designsystem.digital.gov/components/card/',
+          componentDesc: 'USWDS Card',
+          props: {
+            'Card Properties': {
+              props: [
+                { name: 'image', type: 'string', default: 'null', description: 'an image to show for the header of the card' },
+                { name: 'heading', type: 'string', default: 'Default Heading', description: 'card heading' },
+                { name: 'alt', type: 'string', default: 'null', description: 'alt text for the image' },
+              ]
+            },
+            'Card Slots': {
+              props: [
+                { name: 'body', description: 'the card body' },
+                { name: 'footer', description: 'the card footer' },
+              ]
+            },
+          },
+          code: [
+            {
+              code: `<uswds-card-group>
+              <uswds-card></uswds-card>
+              </uswds-card-group>`, language: 'html', accordionHeader: 'Card Example'
+            },
+
+          ]
+        }
+
+        return <sandbox-component component={component}>
+          <uswds-card-group slot="component">
+            <uswds-card heading='Card'>
+              <p slot="body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis earum
+                tenetur quo cupiditate, eaque qui officia recusandae.
+              </p>
+
+              <uswds-button>Default</uswds-button>
+
+            </uswds-card>
+
+            <uswds-card heading='Card' image='https://designsystem.digital.gov/img/introducing-uswds-2-0/built-to-grow--alt.jpg'>
+              <p slot="body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis earum
+                tenetur quo cupiditate, eaque qui officia recusandae.
+              </p>
+
+              <uswds-button>Default</uswds-button>
+
+            </uswds-card>
+
+          </uswds-card-group>
         </sandbox-component>
 
 

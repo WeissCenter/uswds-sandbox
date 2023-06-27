@@ -31,6 +31,11 @@ export namespace Components {
         "expanded": boolean;
         "header": string;
     }
+    interface UswdsAlert {
+        "icon": boolean;
+        "slim": boolean;
+        "type": 'info' | 'warning' | 'error' | 'success';
+    }
     interface UswdsBreadcrumb {
         "ariaLabel": string;
         "breadcrumbs": BreadcrumbItem[];
@@ -42,6 +47,14 @@ export namespace Components {
         "unstyled": boolean;
     }
     interface UswdsButtonGroup {
+        "segmented": boolean;
+    }
+    interface UswdsCard {
+        "alt": string;
+        "heading": string;
+        "image": string;
+    }
+    interface UswdsCardGroup {
     }
     interface UswdsExtendedHeader {
     }
@@ -105,6 +118,12 @@ declare global {
         prototype: HTMLUswdsAccordionItemElement;
         new (): HTMLUswdsAccordionItemElement;
     };
+    interface HTMLUswdsAlertElement extends Components.UswdsAlert, HTMLStencilElement {
+    }
+    var HTMLUswdsAlertElement: {
+        prototype: HTMLUswdsAlertElement;
+        new (): HTMLUswdsAlertElement;
+    };
     interface HTMLUswdsBreadcrumbElement extends Components.UswdsBreadcrumb, HTMLStencilElement {
     }
     var HTMLUswdsBreadcrumbElement: {
@@ -122,6 +141,18 @@ declare global {
     var HTMLUswdsButtonGroupElement: {
         prototype: HTMLUswdsButtonGroupElement;
         new (): HTMLUswdsButtonGroupElement;
+    };
+    interface HTMLUswdsCardElement extends Components.UswdsCard, HTMLStencilElement {
+    }
+    var HTMLUswdsCardElement: {
+        prototype: HTMLUswdsCardElement;
+        new (): HTMLUswdsCardElement;
+    };
+    interface HTMLUswdsCardGroupElement extends Components.UswdsCardGroup, HTMLStencilElement {
+    }
+    var HTMLUswdsCardGroupElement: {
+        prototype: HTMLUswdsCardGroupElement;
+        new (): HTMLUswdsCardGroupElement;
     };
     interface HTMLUswdsExtendedHeaderElement extends Components.UswdsExtendedHeader, HTMLStencilElement {
     }
@@ -172,9 +203,12 @@ declare global {
         "sandbox-main-content": HTMLSandboxMainContentElement;
         "uswds-accordion": HTMLUswdsAccordionElement;
         "uswds-accordion-item": HTMLUswdsAccordionItemElement;
+        "uswds-alert": HTMLUswdsAlertElement;
         "uswds-breadcrumb": HTMLUswdsBreadcrumbElement;
         "uswds-button": HTMLUswdsButtonElement;
         "uswds-button-group": HTMLUswdsButtonGroupElement;
+        "uswds-card": HTMLUswdsCardElement;
+        "uswds-card-group": HTMLUswdsCardGroupElement;
         "uswds-extended-header": HTMLUswdsExtendedHeaderElement;
         "uswds-header": HTMLUswdsHeaderElement;
         "uswds-modal": HTMLUswdsModalElement;
@@ -206,6 +240,11 @@ declare namespace LocalJSX {
         "expanded"?: boolean;
         "header"?: string;
     }
+    interface UswdsAlert {
+        "icon"?: boolean;
+        "slim"?: boolean;
+        "type"?: 'info' | 'warning' | 'error' | 'success';
+    }
     interface UswdsBreadcrumb {
         "ariaLabel"?: string;
         "breadcrumbs"?: BreadcrumbItem[];
@@ -217,6 +256,14 @@ declare namespace LocalJSX {
         "unstyled"?: boolean;
     }
     interface UswdsButtonGroup {
+        "segmented"?: boolean;
+    }
+    interface UswdsCard {
+        "alt"?: string;
+        "heading"?: string;
+        "image"?: string;
+    }
+    interface UswdsCardGroup {
     }
     interface UswdsExtendedHeader {
     }
@@ -245,9 +292,12 @@ declare namespace LocalJSX {
         "sandbox-main-content": SandboxMainContent;
         "uswds-accordion": UswdsAccordion;
         "uswds-accordion-item": UswdsAccordionItem;
+        "uswds-alert": UswdsAlert;
         "uswds-breadcrumb": UswdsBreadcrumb;
         "uswds-button": UswdsButton;
         "uswds-button-group": UswdsButtonGroup;
+        "uswds-card": UswdsCard;
+        "uswds-card-group": UswdsCardGroup;
         "uswds-extended-header": UswdsExtendedHeader;
         "uswds-header": UswdsHeader;
         "uswds-modal": UswdsModal;
@@ -267,9 +317,12 @@ declare module "@stencil/core" {
             "sandbox-main-content": LocalJSX.SandboxMainContent & JSXBase.HTMLAttributes<HTMLSandboxMainContentElement>;
             "uswds-accordion": LocalJSX.UswdsAccordion & JSXBase.HTMLAttributes<HTMLUswdsAccordionElement>;
             "uswds-accordion-item": LocalJSX.UswdsAccordionItem & JSXBase.HTMLAttributes<HTMLUswdsAccordionItemElement>;
+            "uswds-alert": LocalJSX.UswdsAlert & JSXBase.HTMLAttributes<HTMLUswdsAlertElement>;
             "uswds-breadcrumb": LocalJSX.UswdsBreadcrumb & JSXBase.HTMLAttributes<HTMLUswdsBreadcrumbElement>;
             "uswds-button": LocalJSX.UswdsButton & JSXBase.HTMLAttributes<HTMLUswdsButtonElement>;
             "uswds-button-group": LocalJSX.UswdsButtonGroup & JSXBase.HTMLAttributes<HTMLUswdsButtonGroupElement>;
+            "uswds-card": LocalJSX.UswdsCard & JSXBase.HTMLAttributes<HTMLUswdsCardElement>;
+            "uswds-card-group": LocalJSX.UswdsCardGroup & JSXBase.HTMLAttributes<HTMLUswdsCardGroupElement>;
             "uswds-extended-header": LocalJSX.UswdsExtendedHeader & JSXBase.HTMLAttributes<HTMLUswdsExtendedHeaderElement>;
             "uswds-header": LocalJSX.UswdsHeader & JSXBase.HTMLAttributes<HTMLUswdsHeaderElement>;
             "uswds-modal": LocalJSX.UswdsModal & JSXBase.HTMLAttributes<HTMLUswdsModalElement>;

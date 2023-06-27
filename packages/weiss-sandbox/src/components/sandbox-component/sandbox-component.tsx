@@ -74,7 +74,9 @@ export class SandboxComponent {
 
           <uswds-accordion accordionType='bordered'>
               <uswds-accordion-item header={this.component.componentName + " " + "Component Preview"}>
-              <slot name="component"></slot>
+                  <div class="sandbox-accordion-body">
+                      <slot name="component"></slot>
+                  </div>
               </uswds-accordion-item>
             </uswds-accordion>
 

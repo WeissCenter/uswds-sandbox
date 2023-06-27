@@ -8,3 +8,9 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.sandbox-accordion-body{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
