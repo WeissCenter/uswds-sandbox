@@ -20,6 +20,8 @@ export class SandboxComponent {
   
     <h4>{name}</h4>
 
+
+
     <p>{description}</p>
 
     <uswds-table>
@@ -66,7 +68,9 @@ export class SandboxComponent {
 
         <div class="component-content">
           <h2>{this.component.componentName}</h2>
+          <a aria-label="USWDS Website for this component (opens in a new window)" href={this.component.componentURL} target='_blank'>USWDS Website for this component</a>
           <p>{this.component.componentDesc}</p>
+          
 
           <uswds-accordion accordionType='bordered'>
               <uswds-accordion-item header={this.component.componentName + " " + "Component Preview"}>

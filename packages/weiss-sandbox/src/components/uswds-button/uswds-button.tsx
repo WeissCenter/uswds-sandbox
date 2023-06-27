@@ -42,7 +42,9 @@ export class UswdsButton {
 
     return (
       <Host>
-       <button type="button" class={"usa-button " + clazz}>Default</button>
+       <button type="button" class={"usa-button " + clazz}>
+        <slot></slot>
+       </button>
       </Host>
     );
   }

@@ -20,6 +20,7 @@ export class SandboxMainContent {
 
         const component: SandboxComponentItem = {
           componentName: 'Header',
+          componentURL: 'https://designsystem.digital.gov/components/header/',
           componentDesc: 'USWDS Header',
           props: [
             { name: 'headerTitle', type: 'string', default: 'Project Title', description: 'Title for the header' },
@@ -77,6 +78,7 @@ export class SandboxMainContent {
 
         const component: SandboxComponentItem = {
           componentName: 'Side Navigation',
+          componentURL: 'https://designsystem.digital.gov/components/side-navigation/',
           componentDesc: 'USWDS Side Navigation',
           props: [],
           code: [
@@ -126,6 +128,7 @@ export class SandboxMainContent {
 
         const component: SandboxComponentItem = {
           componentName: 'Accordion',
+          componentURL: 'https://designsystem.digital.gov/components/accordion/',
           componentDesc: 'USWDS Accordion',
           props: {
             'Accordion Properties': {description: '', props: [{ name: 'accordionType', type: 'borderless | bordered | multiselectable | multiselectable-bordered', default: 'borderless', description: 'the type of accordion items to show' }]},
@@ -284,6 +287,7 @@ export class SandboxMainContent {
 
         const component: SandboxComponentItem = {
           componentName: 'Table',
+          componentURL: 'https://designsystem.digital.gov/components/table/',
           componentDesc: 'USWDS Table',
           props: {
             'Table Properties': {props: [
@@ -662,6 +666,7 @@ export class SandboxMainContent {
 
         const component: SandboxComponentItem = {
           componentName: 'Breadcrumb',
+          componentURL: 'https://designsystem.digital.gov/components/breadcrumb/',
           componentDesc: 'USWDS Breadcrumb',
           props: {
             'Breadcrumb Properties': {props: [
@@ -701,18 +706,74 @@ export class SandboxMainContent {
       "name": "Button",
       "hash": "button",
       "content": () => {
-        return <div>
-          <h2>Button</h2>
 
-          <p>USWDS Button</p>
-          <uswds-button></uswds-button>
-        </div>
+
+        const component: SandboxComponentItem = {
+          componentName: 'Button',
+          componentURL: 'https://designsystem.digital.gov/components/button/',
+          componentDesc: 'USWDS Button',
+          props: {
+            'Button Properties': {props: [
+              { name: 'unstyled', type: 'boolean', default: 'false', description: 'button is unstyled or not' },
+              { name: 'inverse', type: 'boolean', default: 'false', description: 'button is inversed or not' },
+              { name: 'big', type: 'boolean', default: 'false', description: 'button is big or not' },
+              { name: 'type', type: 'default | secondary | accent-cool | accent-warm | base | outline', default: 'default', description: 'button type' }
+            ]},
+          },
+          code: [
+            {
+              code: `<uswds-button>Default</uswds-button>`, language: 'html', accordionHeader: 'Button Example'
+            },
+
+          ]
+        }
+
+
+
+
+
+        return <sandbox-component component={component}>
+            <uswds-button slot="component" onClick={() => window.alert("Hello from uswds button!")}>
+              Default
+            </uswds-button>
+        </sandbox-component>
       }
     },
     {
       "name": "Button group",
       "hash": "button-group",
-      "content": () => <uswds-button-group></uswds-button-group>
+      "content": () => {
+
+        const component: SandboxComponentItem = {
+          componentName: 'Button Group',
+          componentURL: 'https://designsystem.digital.gov/components/button-group/',
+          componentDesc: 'USWDS Button',
+          props: {
+            'Button Properties': {props: [
+              { name: 'unstyled', type: 'boolean', default: 'false', description: 'button is unstyled or not' },
+              { name: 'inverse', type: 'boolean', default: 'false', description: 'button is inversed or not' },
+              { name: 'big', type: 'boolean', default: 'false', description: 'button is big or not' },
+              { name: 'type', type: 'default | secondary | accent-cool | accent-warm | base | outline', default: 'default', description: 'button type' }
+            ]},
+          },
+          code: [
+            {
+              code: `<uswds-button>Default</uswds-button>`, language: 'html', accordionHeader: 'Button Example'
+            },
+
+          ]
+        }
+
+
+        return <sandbox-component component={component}>
+          <uswds-button-group slot="component">
+            <uswds-button>Default 1</uswds-button>
+            <uswds-button unstyled={true}>Default 2</uswds-button>
+          </uswds-button-group>
+        </sandbox-component>
+
+
+      }
     }
 
   ]

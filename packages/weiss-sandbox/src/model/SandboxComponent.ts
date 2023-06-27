@@ -1,6 +1,7 @@
 export interface SandboxComponentItem {
     componentName: string;
     componentDesc: string;
+    componentURL: string;
     props: {[name: string]: {description?: string, props: SandboxComponentProperty[]}} | SandboxComponentProperty[];
     code: SandboxComponentCode[];
 }
