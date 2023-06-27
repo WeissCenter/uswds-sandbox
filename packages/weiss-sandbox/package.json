@@ -19,7 +19,7 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs && ls node_modules && cp -r node_modules/@uswds/uswds/dist www/assets/uswds",
+    "build": "stencil build --docs && cp -r ../node_modules/@uswds/uswds/dist www/assets/uswds",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
